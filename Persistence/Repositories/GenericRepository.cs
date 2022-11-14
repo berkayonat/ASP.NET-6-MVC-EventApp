@@ -1,6 +1,6 @@
-﻿using DataAccessLayer.Abstract;
-using DataAccessLayer.Concrete;
+﻿using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +8,14 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Repository
+namespace Persistence.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly Context _context;
+        private readonly AppDbContext _context;
         private readonly DbSet<T> dbSet;
 
-        public GenericRepository(Context context)
+        public GenericRepository(AppDbContext context)
         {
             _context = context;
             dbSet = _context.Set<T>();

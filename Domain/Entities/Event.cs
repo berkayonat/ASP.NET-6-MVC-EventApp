@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Concrete
+namespace Domain.Entities
 {
     public class Event
     {
-        public int Id { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? Image { get; set; }
@@ -23,7 +22,5 @@ namespace EntityLayer.Concrete
         public bool Status { get; set; } = false;
         public DateTime EventDate { get; set; }
         public DateTime ApplicationDeadline { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
     }
 }
