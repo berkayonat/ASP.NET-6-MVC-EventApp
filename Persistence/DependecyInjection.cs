@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
-
+using Persistence.Repositories;
 
 namespace Persistence
 {
@@ -15,6 +15,8 @@ namespace Persistence
                 configuration.GetConnectionString("DefaultConnection"), 
                 b => b.MigrationsAssembly("EventApp")));
             services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
         }
     }
 }
