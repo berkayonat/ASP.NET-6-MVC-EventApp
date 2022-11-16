@@ -18,7 +18,7 @@ namespace Domain.Entities
         public int Capacity { get; set; }
         public int UserId { get; set; }
         public bool TicketNeeded { get; set; }
-        public decimal? Price { get; set; }
+        public int? Price { get; set; }
         public bool Status { get; set; } = false;
         public DateTime EventDate { get; set; }
         public DateTime ApplicationDeadline { get; set; }

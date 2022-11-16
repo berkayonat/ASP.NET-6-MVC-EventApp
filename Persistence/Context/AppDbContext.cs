@@ -47,9 +47,6 @@ namespace Persistence.Context
             builder.Entity<Event>()
                 .Property(e => e.UserId)
                 .IsRequired();
-            builder.Entity<Event>()
-                .Property(e => e.Price)
-                .HasDefaultValue(0);
 
         }
     }
