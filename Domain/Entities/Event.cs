@@ -16,7 +16,7 @@ namespace Domain.Entities
         public int CityId { get; set; }
         public string? Adress { get; set; }
         public int Capacity { get; set; }
-        public int UserId { get; set; }
+        public int AppUserId { get; set; }
         public bool TicketNeeded { get; set; }
         public int? Price { get; set; }
         public bool Status { get; set; } = false;

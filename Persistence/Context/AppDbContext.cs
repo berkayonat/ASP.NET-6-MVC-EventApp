@@ -1,11 +1,12 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace Persistence.Context
 {
-    public class AppDbContext : DbContext, IAppDbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, int>, IAppDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -17,10 +18,13 @@ namespace Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            base.OnModelCreating(builder);
+           
             builder.Entity<Category>()
                 .Property(c => c.Name)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(100);
             
 
             builder.Entity<Event>()
@@ -32,21 +36,26 @@ namespace Persistence.Context
             builder.Entity<Event>()
                 .Property(e => e.Title)
                 .IsRequired()
-                .HasMaxLength(100);
-
+                .HasMaxLength(150);
             builder.Entity<Event>()
                 .Property(e => e.CategoryId)
                 .IsRequired();
-            
             builder.Entity<Event>()
                 .Property(e => e.CityId)
                 .IsRequired();
             builder.Entity<Event>()
                 .Property(e => e.Adress)
-                .HasMaxLength(150);
+                .HasMaxLength(256);
             builder.Entity<Event>()
                 .Property(e => e.UserId)
                 .IsRequired();
+
+            builder.Entity<AppUser>()
+                .Property(a => a.Name)
+                .HasMaxLength(100);
+            builder.Entity<AppUser>()
+                .Property(a => a.Surname)
+                .HasMaxLength(100);
 
         }
     }
