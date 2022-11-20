@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.CQRS.Queries.Admin.GetAllEvents
 {
-    public class GetAllEventsQueryHandler : IRequestHandler<GetAllEventsQuery, IEnumerable<EventDto>>
+    public class GetAllEventsQueryHandler : IRequestHandler<GetAllEventsQuery, IEnumerable<EventIndexDto>>
     {
         private readonly IEventRepository _eventRepository;
         
@@ -21,7 +21,7 @@ namespace Application.CQRS.Queries.Admin.GetAllEvents
             
         }
 
-        public async Task<IEnumerable<EventDto>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<EventIndexDto>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken)
         {
             var events = await _eventRepository.GetAllEventsWithCategoryAndCity();
             return events;

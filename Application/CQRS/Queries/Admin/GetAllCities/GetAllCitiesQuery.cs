@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.CQRS.Queries.Admin.GetAllEvents
+namespace Application.CQRS.Queries.Admin.GetAllCities
 {
-    public class GetAllEventsQuery : IRequest<IEnumerable<EventIndexDto>>
+    public class GetAllCitiesQuery : IRequest<IEnumerable<CitiesDto>>
     {
-        
     }
 }

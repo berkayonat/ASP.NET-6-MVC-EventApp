@@ -19,10 +19,10 @@ namespace Persistence.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<EventDto>> GetAllEventsWithCategoryAndCity()
+        public async Task<IEnumerable<EventIndexDto>> GetAllEventsWithCategoryAndCity()
         {
             return await _context.Events.Include(a => a.City).Include(a => a.Category)
-                .Select(a => new EventDto()
+                .Select(a => new EventIndexDto()
                 {
                     Id = a.Id,
                     Title = a.Title,
@@ -31,6 +31,12 @@ namespace Persistence.Repositories
                     EventDate = a.EventDate,
                     Status = a.Status
                 }).ToListAsync();
+        }
+
+        public async Task<Event> GetEventByIdWithInclude(int id)
+        {
+            return await _context.Events.Include(a => a.City).Include(a => a.Category)
+                .Include(a => a.AppUser).Where(a=>a.Id == id).FirstAsync();
         }
     }
 }

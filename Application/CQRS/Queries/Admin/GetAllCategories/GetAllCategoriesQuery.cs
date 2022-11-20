@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.CQRS.Queries.Admin.GetAllEvents
+namespace Application.CQRS.Queries.Admin.GetAllCategories
 {
-    public class GetAllEventsQuery : IRequest<IEnumerable<EventIndexDto>>
+    public class GetAllCategoriesQuery : IRequest<IEnumerable<CategoriesDto>>
     {
-        
     }
 }

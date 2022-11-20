@@ -3,7 +3,7 @@
 <header id="site-header" class="fixed-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                 EventApp
             </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
@@ -15,16 +15,16 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                        <a class="nav-link active" as aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link active" as aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="classes.html">Classes</a>
+                        <a class="nav-link" asp-area="" asp-controller="Event" asp-action="Index">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                     </li>
                     <partial name="_LoginPartial" />
                 </ul>

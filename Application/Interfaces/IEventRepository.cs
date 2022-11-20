@@ -11,7 +11,7 @@ namespace Application.Interfaces
 {
     public interface IEventRepository : IGenericRepository<Event>
     {
-        Task<IEnumerable<EventDto>> GetAllEventsWithCategoryAndCity();
-        
+        Task<IEnumerable<EventIndexDto>> GetAllEventsWithCategoryAndCity();
+        Task<Event> GetEventByIdWithInclude(int id);
     }
 }

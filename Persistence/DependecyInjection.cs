@@ -17,6 +17,7 @@ namespace Persistence
             services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
         }
     }
 }
