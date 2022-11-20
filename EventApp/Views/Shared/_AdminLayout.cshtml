@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>@ViewData["Title"] - EventApp | Dashboard</title>
+    <!-- GLOBAL MAINLY STYLES-->
+    <link href="~/admincast-master/html/dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/admincast-master/html/dist/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/admincast-master/html/dist/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <!-- PLUGINS STYLES-->
+    <link href="~/admincast-master/html/dist/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+    <!-- THEME STYLES-->
+    <link href="~/admincast-master/html/dist/assets/css/main.min.css" rel="stylesheet" />
+    <!-- PAGE LEVEL STYLES-->
+</head>
+
+<body class="fixed-navbar">
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        <partial name="~/Areas/Admin/Views/LayoutPartial/_HeaderPartial.cshtml" />
+        <!-- END HEADER-->
+        <!-- START SIDEBAR-->
+        <partial name="~/Areas/Admin/Views/LayoutPartial/_SidebarPartial.cshtml" />
+        <!-- END SIDEBAR-->
+        <div class="content-wrapper">
+            <!-- START PAGE CONTENT-->
+            @RenderBody()
+            <!-- END PAGE CONTENT-->
+            <footer class="page-footer">
+                <div class="font-13">2018 © <b>AdminCAST</b> - All rights reserved.</div>
+                <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+            </footer>
+        </div>
+    </div>
+
+    <partial name="~/Areas/Admin/Views/LayoutPartial/_ScriptsPartial.cshtml" />
+
+   
+</body>
+
+</html>
