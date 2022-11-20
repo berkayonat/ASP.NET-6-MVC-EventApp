@@ -14,13 +14,19 @@ namespace Persistence.Context
 
         public DbSet<Category>? Categories { get; set; }
         public DbSet<Event>? Events { get; set; }
+        public DbSet<City>? Cities { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
-           
+
+            builder.Entity<City>()
+                .Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
             builder.Entity<Category>()
                 .Property(c => c.Name)
                 .IsRequired()
@@ -31,6 +37,12 @@ namespace Persistence.Context
                 .HasOne<Category>(e => e.Category)
                 .WithMany(c => c.Events)
                 .HasForeignKey(e => e.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Event>()
+                .HasOne<City>(e => e.City)
+                .WithMany(c => c.Events)
+                .HasForeignKey(e => e.CityId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Event>()
@@ -47,7 +59,7 @@ namespace Persistence.Context
                 .Property(e => e.Adress)
                 .HasMaxLength(256);
             builder.Entity<Event>()
-                .Property(e => e.UserId)
+                .Property(e => e.AppUserId)
                 .IsRequired();
 
             builder.Entity<AppUser>()

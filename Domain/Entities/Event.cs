@@ -24,5 +24,7 @@ namespace Domain.Entities
         public DateTime ApplicationDeadline { get; set; }
 
         public Category? Category { get; set; }
+        public City? City { get; set; }
+        public AppUser? AppUser { get; set; }
     }
 }
