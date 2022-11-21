@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Validators.Admin;
+using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ namespace Application
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddControllers().AddFluentValidation(fv =>
+            fv.RegisterValidatorsFromAssemblyContaining<EventDetailDtoValidator>());
         }
     }
 }

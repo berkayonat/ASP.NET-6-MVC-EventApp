@@ -1,11 +1,20 @@
-﻿<nav class="page-sidebar" id="sidebar">
+﻿@using Domain.Entities
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+@inject RoleManager<AppRole> Roleanager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var roles = await UserManager.GetRolesAsync(user);
+}
+<nav class="page-sidebar" id="sidebar">
     <div id="sidebar-collapse">
         <div class="admin-block d-flex">
             <div>
                 <img src="~/admincast-master/html/dist/assets/img/admin-avatar.png" width="45px" />
             </div>
             <div class="admin-info">
-                <div class="font-strong">James Brown</div><small>Administrator</small>
+                <div class="font-strong">@user.Name</div><small>@roles.FirstOrDefault()</small>
             </div>
         </div>
         <ul class="side-menu metismenu">

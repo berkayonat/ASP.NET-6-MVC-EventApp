@@ -1,4 +1,5 @@
-﻿using Application.CQRS.Commands.Admin.DeleteEvent;
+﻿using Application.CQRS.Commands.Admin.CreateEvent;
+using Application.CQRS.Commands.Admin.DeleteEvent;
 using Application.CQRS.Commands.Admin.UpdateEvent;
 using Application.CQRS.DTOs.Admin;
 using Application.CQRS.Queries.Admin.GetAllCategories;
@@ -39,24 +40,30 @@ namespace EventApp.Areas.Admin.Controllers
         }
 
         // GET: EventController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            var cities = await _mediator.Send(new GetAllCitiesQuery());
+            var categories = await _mediator.Send(new GetAllCategoriesQuery());
+            ViewBag.cities = cities.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Name
+            });
+            ViewBag.categories = categories;
             return View();
         }
 
         // POST: EventController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(EventDetailDto model)
         {
-            try
+            if (ModelState.IsValid)
             {
+                await _mediator.Send(new CreateEventCommand(model.Id, model.Title, model.Description, model.Image, model.CategoryId, model.CityId, model.Adress, model.Capacity, model.TicketNeeded, model.Price, model.EventDate, model.ApplicationDeadline));
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
 
         // GET: EventController/Edit/5

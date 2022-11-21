@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace Application.CQRS.DTOs.Admin
         public int CityId { get; set; }
         public string? Adress { get; set; }
         public int Capacity { get; set; }
-        public string? AppUser { get; set; }
+        public AppUser? AppUser { get; set; }
         public bool TicketNeeded { get; set; }
         public int? Price { get; set; }
         public bool Status { get; set; } = false;

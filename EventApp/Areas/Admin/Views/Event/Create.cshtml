@@ -1,21 +1,19 @@
 ﻿@using Application.CQRS.DTOs.Admin
 @model EventDetailDto
-
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 <section class="content">
 
     <div class="card-body">
         <div class="ibox">
             <div class="ibox-head">
-                <div class="ibox-title">Edit Event</div>
+                <div class="ibox-title">Create Event</div>
             </div>
             <div class="ibox-body">
-                <form asp-area="Admin" asp-controller="Event" asp-action="Edit">
+                <form asp-area="Admin" asp-controller="Event" asp-action="Create">
 
                     <div class="form-group">
                         <label>Category</label>
@@ -24,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label>City</label>
-                        <select class="form-control select2-close-mask" asp-for="CityId" asp-items="@ViewBag.cities" style="width: 100%;">
+                        <select class="form-control select2-close-mask" asp-for="CityId" asp-items="@ViewBag.cities">
                         </select>
                     </div>
                     <div class="form-group">
@@ -78,22 +76,7 @@
                         <input class="form-control" asp-for="Status">
                     </div>
                     <div class="form-group">
-                        <label>Created At</label>
-                        <input class="form-control" asp-for="CreatedAt" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Updated At</label>
-                        <input class="form-control" asp-for="UpdatedAt" disabled>
-                    </div>
-
-                    <div class="form-group">
-                        <label>User</label>
-                        <input class="form-control" value="@Model.AppUser.Name @Model.AppUser.Surname - @Model.AppUser.Email" disabled>
-                       
-                    </div>
-
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Create</button>
                         <a asp-area="Admin" asp-controller="Event" asp-action="Index" class="btn btn-secondary">
                             Back
                         </a>
@@ -108,9 +91,10 @@
 </section>
 
 @section Scripts {
-    
-        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-    
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
     }
+

@@ -26,7 +26,7 @@ namespace Persistence.Context
 
                 if (entityEntry.State == EntityState.Added)
                 {
-                    ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.Now;
+                    ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.Now;
                 }
             }
 

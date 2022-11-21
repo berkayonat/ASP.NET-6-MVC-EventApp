@@ -37,6 +37,7 @@ namespace Application.CQRS.Commands.Admin.UpdateEvent
             entity.Image = request.Image;
             entity.Status = request.Status;
             entity.TicketNeeded = request.TicketNeeded;
+            entity.UpdatedAt = DateTime.Now;
 
             await _eventRepository.Update(entity);
             
